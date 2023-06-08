@@ -7,6 +7,8 @@ import Html.Events exposing (onInput)
 import Html.Attributes exposing (..)
 import Dict exposing (update)
 import Char exposing (isUpper)
+import Char exposing (isLower)
+import Char exposing (isDigit)
 
 
 -- Hauptfunktion
@@ -60,8 +62,13 @@ viewValidation model =
       div [style "color" "red"][text "Password too short !  "]
   else if not (String.any isUpper model.password) then
       div [style "color" "red"][text "Password must contain Upper Char "]
+  else if not (String.any isLower model.password ) then 
+      div [style "color" "red"][text "Password must contain Lower Char "]
+  else if not (String.any isDigit model.password ) then 
+      div [style "color" "red"][text "Password must contain Digits "]
+
   else 
-        div [style "color" "red"][text "OK  "]
+        div [style "color" "green"][text "OK  "]
 
 
 
